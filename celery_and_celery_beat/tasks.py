@@ -15,13 +15,13 @@ def add(x, y):
 app.conf.beat_schedule = {
     'say-hello-every-1-second': {
         'task': 'tasks.greet',
-        'schedule': 1.0,  # every 1 second
+        'schedule': 1.0,  
         'args': ('Rafi',)
     },
 
     'add-numbers-every-1-seconds': {
         'task': 'tasks.add',
-        'schedule': 1.0,  # every 2 seconds
+        'schedule': 1.0,  
         'args': (10, 20)
     },
 }

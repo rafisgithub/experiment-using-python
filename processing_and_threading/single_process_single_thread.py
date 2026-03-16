@@ -1,22 +1,19 @@
-import threading
-
-def task1():
-    print("Task 1 is starting")
-    for i in range(50000):
-        print(f"Task 1 is running iteration {i}")
-    print("Task 1 is completed")
+import os
+import time
 
 
-def task2():
-    print("Task 2 is starting")
-    for i in range(5000):
-        print(f"Task 2 is running iteration {i}")
-    print("Task 2 is completed")
+def task(name: str, seconds: int) -> None:
+    print(f"[{os.getpid()}] {name} started")
+    time.sleep(seconds)
+    print(f"[{os.getpid()}] {name} finished")
 
-# use thread
 
-t1 = threading.Thread(target=task1)
-t2 = threading.Thread(target=task1)
+if __name__ == "__main__":
+    start = time.perf_counter()
 
-t1.start()
-t2.start()
+    # Same process and same main thread: tasks run one after another.
+    task("Task-1", 2)
+    task("Task-2", 1)
+
+    end = time.perf_counter()
+    print(f"Total time: {end - start:.2f} seconds")

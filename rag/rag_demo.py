@@ -9,8 +9,7 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 
 # 1. Your OpenAI API key
-os.environ["OPENAI_API_KEY"] = "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"
-
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")  
 # 2. Sample documents
 documents = [
     "Python is a popular programming language known for its readability and versatility.",
